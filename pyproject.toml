@@ -1,0 +1,23 @@
+[project]
+name = "weather-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "apscheduler>=3.11.1",
+    "dashscope>=1.25.2",
+    "fastapi>=0.122.0",
+    "langchain>=1.1.0",
+    "langchain-community>=0.4.1",
+    "langchain-core>=1.1.0",
+    "langchain-mcp-adapters>=0.1.14",
+    "langchain-openai>=1.1.0",
+    "python-dotenv>=1.2.1",
+    "ruff>=0.14.6",
+    "uvicorn>=0.38.0",
+]
+
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple/"
+default = true
