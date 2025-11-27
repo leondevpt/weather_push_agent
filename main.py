@@ -95,8 +95,15 @@ async def init_weather_push_agent():
         f"{getattr(t, 'name', '')}: {getattr(t, 'description', getattr(t, '__doc__', '') or '')}" 
         for t in langchain_tools
     ])
-    # LLM 配置（OpenAI GPT-3.5/4，可替换为其他模型）
-    llm = get_llm()
+    # LLM 配置
+    provider = os.getenv("DEFAULT_PUSH_AGENT_LLM_PROVIDER")
+    if not provider:
+        llm = get_llm()
+    else:
+        if provider not in ["qwen", "gemini"]:
+            llm = get_llm()
+        else:
+            llm = get_llm(provider)
     
     # 创建 React Agent（LangChain 1.0+ 推荐）
     agent = create_agent(
